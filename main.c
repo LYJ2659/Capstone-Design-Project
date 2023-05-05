@@ -80,7 +80,7 @@ uint16_t readadc(uint8_t ch)
     ADMUX = (ADMUX & 0xf8) | ch;  // Clear last 3 bits of ADMUX, OR with ch
     ADCSRA |= (1<<ADSC);        // START CONVERSION
     while((ADCSRA) & (1<<ADSC));    // WAIT UNTIL CONVERSION IS COMPLETE
-    return(ADC);        // RETURN ADC VALUE
+    return(ADC);        	// RETURN ADC VALUE
 }
 
 int main(void)
@@ -95,9 +95,9 @@ int main(void)
 
 	createStack(100);
 	 
-	PORTE |= 0x10; // PULL UP 저항 연결 
-	EICRB |= 0x20; // 인터럽트 트리거 방식 설정: 하강에지	
-	EIMSK |= 0x10; // 인터럽트 허용 설정
+	PORTE |= 0x10; // Connecting a PULL UP resistor
+	EICRB |= 0x20; // Interrupt trigger method setting: Falling edge	
+	EIMSK |= 0x10; // Interrupt enable setting
 
 	sei();
 
@@ -112,7 +112,7 @@ int main(void)
 		x = readadc(0);      	// READ ADC VALUE FROM PF.0
         	y = readadc(1);      	// READ ADC VALUE FROM PF.1
         	x = x - 512;         	// x = -4
-        	y = y - 512;   			// y = 14
+        	y = y - 512;   		// y = 14
 	
 		x = x * (-1);
 		
