@@ -91,28 +91,28 @@ int main(void)
 	uint8_t led = 0;
 
 	UART1_Init(103);
-    InitADC();
+    	InitADC();
 
 	createStack(100);
 	 
-	PORTE |= 0x10; // PULL UP ÀúÇ× ¿¬°á 
-	EICRB |= 0x20; // ÀÎÅÍ·´Æ® Æ®¸®°Å ¹æ½Ä ¼³Á¤: ÇÏ°­¿¡Áö	
-	EIMSK |= 0x10; // ÀÎÅÍ·´Æ® Çã¿ë ¼³Á¤
+	PORTE |= 0x10; // PULL UP ì €í•­ ì—°ê²° 
+	EICRB |= 0x20; // ì¸í„°ëŸ½íŠ¸ íŠ¸ë¦¬ê±° ë°©ì‹ ì„¤ì •: í•˜ê°•ì—ì§€	
+	EIMSK |= 0x10; // ì¸í„°ëŸ½íŠ¸ í—ˆìš© ì„¤ì •
 
 	sei();
 
-    lcd_init(LCD_DISP_ON_BLINK);
-    lcd_led(led); //set led: led = 0 -> led on, led = 1 -> led off
+    	lcd_init(LCD_DISP_ON_BLINK);
+    	lcd_led(led); //set led: led = 0 -> led on, led = 1 -> led off
 
-    while(1) 
+    	while(1) 
 	{
 		
 		lcd_home();
 	
 		x = readadc(0);      	// READ ADC VALUE FROM PF.0
-        y = readadc(1);      	// READ ADC VALUE FROM PF.1
-        x = x - 512;         	// x = -4
-        y = y - 512;   			// y = 14
+        	y = readadc(1);      	// READ ADC VALUE FROM PF.1
+        	x = x - 512;         	// x = -4
+        	y = y - 512;   			// y = 14
 	
 		x = x * (-1);
 		
@@ -120,20 +120,20 @@ int main(void)
 		if(y > -10 && y < 20) y = 0;
 
 		itoa(x,a,10);    
-        itoa(y,b,10);
+        	itoa(y,b,10);
 		
 		lcd_puts("x=");     // DISPLAY THE RESULTS ON LCD
-        lcd_gotoxy(2,0);
-        lcd_puts(a);
+        	lcd_gotoxy(2,0);
+        	lcd_puts(a);
 		lcd_puts("     ");
 
 		if(x > 0) sprintf(c,"<%c1%c>", '1', 'r');
 		if(x < 0) sprintf(c,"<%c1%c>", '1', 'l');
 			
 		lcd_gotoxy(7,0);
-        lcd_puts("y=");
-        lcd_gotoxy(9,0);
-        lcd_puts(b);
+        	lcd_puts("y=");
+        	lcd_gotoxy(9,0);
+        	lcd_puts(b);
 		lcd_puts("     ");
 
 		if(y > 0) sprintf(c,"<%c1%c>", '1', 's');
