@@ -1,2 +1,2 @@
 # Capstone-Design-Project
-Project about remote controller used to operate RC Car
+Team Project(3 Team members) - remote controller used to operate RC Car using atmega128 board, joystick, switch
